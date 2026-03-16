@@ -172,7 +172,7 @@ body::after {
 
 .sidebar-chapter-num {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size:15px;
   letter-spacing: 0.1em;
   color: var(--titan-amber);
   min-width: 22px;
@@ -216,7 +216,7 @@ body::after {
 .sidebar-sub a {
   display: block;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
   color: var(--text-dim);
   text-decoration: none;
@@ -254,9 +254,80 @@ body::after {
 }
 
 @media (max-width: 860px) {
-  .sidebar { display: none; }
   .layout { padding-left: 0; }
   .container { padding: 0 1.5rem; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 100;
+    box-shadow: none;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+  }
+
+  .hamburger {
+    display: flex !important;
+  }
+}
+
+/* HAMBURGER ICON */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 300;
+  background: #181C24;
+  border: 1px solid rgba(232, 134, 10, 0.5);
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  transition: background 0.15s;
+}
+
+.hamburger:hover {
+  background: rgba(232, 134, 10, 0.15);
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #E8860A;
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE OVERLAY */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;
+  backdrop-filter: blur(2px);
 }
 
 /* HEADER */
@@ -421,7 +492,7 @@ section {
 
 .section-num {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 20px;
   color: var(--titan-amber);
   letter-spacing: 0.1em;
 }
@@ -438,7 +509,7 @@ section {
 
 .section-tag {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.15em;
   padding: 3px 8px;
   border: 1px solid var(--border-warm);
@@ -520,7 +591,7 @@ th {
   font-family: var(--font-head);
   font-weight: 600;
   letter-spacing: 0.1em;
-  font-size: 13px;
+  font-size: 15px;
   text-transform: uppercase;
   color: var(--text-mid);
   padding: 0.6rem 1rem;
@@ -670,8 +741,8 @@ tr:hover td { background: rgba(232, 134, 10, 0.04); }
 /* TIMELINE */
 .timeline {
   position: relative;
-  margin: 1.5rem 0;
-  padding-left: 2rem;
+  margin: 1.0rem 0;
+  padding-left: 1.0rem;
 }
 
 .timeline::before {
@@ -692,7 +763,7 @@ tr:hover td { background: rgba(232, 134, 10, 0.04); }
 .timeline-entry::before {
   content: '';
   position: absolute;
-  left: -2.25rem;
+  left: -2.0rem;
   top: 7px;
   width: 6px;
   height: 6px;
@@ -703,7 +774,7 @@ tr:hover td { background: rgba(232, 134, 10, 0.04); }
 .timeline-entry.key::before {
   width: 10px;
   height: 10px;
-  left: -2.4rem;
+  left: -2.1rem;
   top: 5px;
   background: var(--red-alert);
   box-shadow: 0 0 8px rgba(196,58,58,0.5);
@@ -830,7 +901,7 @@ tr:hover td { background: rgba(232, 134, 10, 0.04); }
 
 .moon-pop {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   color: var(--text-dim);
   margin-bottom: 0.75rem;
@@ -846,7 +917,7 @@ tr:hover td { background: rgba(232, 134, 10, 0.04); }
 
 .moon-body-line {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--text-dim);
   border-top: 1px solid rgba(255,255,255,0.05);
@@ -978,7 +1049,7 @@ blockquote {
 blockquote p {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 1.15rem;
+  font-size: 0.9rem;
   font-weight: 300;
   color: var(--text-mid);
   line-height: 1.7;
@@ -994,11 +1065,6 @@ blockquote cite {
 }
 
 /* FOOTER */
-footer {
-  border-top: 1px solid var(--accent-line);
-  padding: 2.5rem 0;
-  margin-top: 4rem;
-}
 
 .footer-inner {
   display: flex;
