@@ -41,6 +41,8 @@ const chapterMap = {
   'moon-rhea':          'sub-moons',
   'moon-dione':         'sub-moons',
   'factions':           'sub-factions',
+  'h-cryo-guilds':      'sub-factions',
+  'h-associate-guilds': 'sub-factions',
   'history':            'sub-history',
   'full-timeline':      'sub-timeline',
   'h-era1':             'sub-timeline',
