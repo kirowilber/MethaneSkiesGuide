@@ -43,6 +43,7 @@ const chapterMap = {
   'factions':               'sub-factions',
   'h-tfs-depth':            'sub-factions',
   'h-tfs-assembly-history': 'sub-factions',
+  'h-eca-depth':            'sub-factions',
   'h-cryo-guilds':          'sub-factions',
   'h-associate-guilds':     'sub-factions',
   'history':            'sub-history',
